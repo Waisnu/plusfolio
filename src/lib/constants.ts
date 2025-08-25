@@ -122,12 +122,12 @@ export const TECHNOLOGIES = [
 // WebGL Shader Configuration
 export const SHADER_CONFIG = {
   uniforms: {
-    xScale: 1.0,
-    yScale: 0.5,
-    distortion: 0.05,
+    xScale: 1.0, // Original values
+    yScale: 0.5, // Original values
+    distortion: 0.05, // Original values
   },
   animation: {
-    timeIncrement: 0.01,
-    initDelay: 100,
+    timeIncrement: 0.01, // Original time increment for proper effect speed
+    initDelay: 100, // Keep optimized delay
   }
 } as const;

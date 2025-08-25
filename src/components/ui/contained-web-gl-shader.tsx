@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useCallback } from "react"
+import { useEffect, useRef, useCallback, useState } from "react"
 import * as THREE from "three"
 import { SHADER_CONFIG } from "@/lib/constants"
 import type { WebGLRefs } from "@/types"
@@ -17,15 +17,24 @@ export function ContainedWebGLShader() {
     animationId: null,
   })
 
-  const animate = useCallback(() => {
+  const animate = useCallback(function animateLoop() {
     const { current: refs } = sceneRef
-    if (refs.uniforms) refs.uniforms.time.value += SHADER_CONFIG.animation.timeIncrement
-    if (refs.renderer && refs.scene && refs.camera) {
-      refs.renderer.render(refs.scene, refs.camera)
+    
+    if (!refs.renderer || !refs.scene || !refs.camera || !refs.uniforms) {
+      return
     }
-    refs.animationId = requestAnimationFrame(animate)
+    
+    // Smooth time progression
+    refs.uniforms.time.value += 0.01
+    
+    // Force render
+    refs.renderer.render(refs.scene, refs.camera)
+    
+    // Continue animation loop
+    refs.animationId = requestAnimationFrame(animateLoop)
   }, [])
 
+  // Simplified initialization without viewport detection
   useEffect(() => {
     if (!canvasRef.current || !containerRef.current) return
 
@@ -57,9 +66,9 @@ export function ContainedWebGLShader() {
         float gx = p.x;
         float bx = p.x * (1.0 - d);
 
-        float r = 0.05 / abs(p.y + sin((rx + time) * xScale) * yScale);
-        float g = 0.05 / abs(p.y + sin((gx + time) * xScale) * yScale);
-        float b = 0.05 / abs(p.y + sin((bx + time) * xScale) * yScale);
+        float r = 0.05 / max(abs(p.y + sin((rx + time) * xScale) * yScale), 0.001);
+        float g = 0.05 / max(abs(p.y + sin((gx + time) * xScale) * yScale), 0.001);
+        float b = 0.05 / max(abs(p.y + sin((bx + time) * xScale) * yScale), 0.001);
         
         gl_FragColor = vec4(r, g, b, 1.0);
       }
@@ -67,9 +76,17 @@ export function ContainedWebGLShader() {
 
     const initScene = () => {
       refs.scene = new THREE.Scene()
-      refs.renderer = new THREE.WebGLRenderer({ canvas })
-      refs.renderer.setPixelRatio(window.devicePixelRatio)
-      refs.renderer.setClearColor(new THREE.Color(0x000000))
+      refs.renderer = new THREE.WebGLRenderer({ 
+        canvas,
+        alpha: false,
+        antialias: false,
+        powerPreference: "high-performance",
+        preserveDrawingBuffer: false,
+        stencil: false,
+        depth: false
+      })
+      refs.renderer.setPixelRatio(1) // Force 1:1 pixel ratio for consistent performance
+      refs.renderer.setClearColor(new THREE.Color(0x000000), 1)
 
       refs.camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, -1)
 
@@ -120,22 +137,19 @@ export function ContainedWebGLShader() {
       refs.uniforms.resolution.value = [width, height]
     }
 
-    // Initialize with a delay to ensure container is rendered
-    const initTimer = setTimeout(() => {
-      initScene()
-      animate()
-    }, SHADER_CONFIG.animation.initDelay)
+    // Initialize immediately for smoother startup
+    initScene()
+    animate()
 
-    const resizeObserver = new ResizeObserver(handleResize)
-    resizeObserver.observe(container)
+    // Simple window resize handler instead of ResizeObserver
+    window.addEventListener('resize', handleResize)
 
     return () => {
-      clearTimeout(initTimer)
       if (refs.animationId) {
         cancelAnimationFrame(refs.animationId)
         refs.animationId = null
       }
-      resizeObserver.disconnect()
+      window.removeEventListener('resize', handleResize)
       
       // Comprehensive cleanup
       if (refs.mesh) {

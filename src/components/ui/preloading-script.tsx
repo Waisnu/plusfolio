@@ -31,6 +31,19 @@ export function PreloadingScript() {
         dangerouslySetInnerHTML={{
           __html: `
             (function() {
+              // Register service worker for caching
+              if ('serviceWorker' in navigator && window.location.protocol === 'https:') {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                      console.log('SW registered: ', registration);
+                    })
+                    .catch(function(registrationError) {
+                      console.log('SW registration failed: ', registrationError);
+                    });
+                });
+              }
+              
               // Convert font preload to stylesheet when loaded
               const fontPreload = document.getElementById('font-preload');
               if (fontPreload) {

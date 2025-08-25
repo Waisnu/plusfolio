@@ -7,26 +7,36 @@ import PulsatingDots from '@/components/ui/pulsating-loader';
 export default function SiteLoader() {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    // Simulate loading progress
+    setIsMounted(true);
+    
+    // Much faster loading with fewer steps to reduce perceived load time
+    let currentProgress = 0;
+    const incrementAmount = 25; // Larger increments for faster loading
+    
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
-        if (oldProgress === 100) {
+        if (oldProgress >= 100) {
           clearInterval(timer);
-          // Wait a bit before hiding loader
-          setTimeout(() => setIsLoading(false), 500);
+          // Minimal delay before hiding loader
+          setTimeout(() => setIsLoading(false), 200);
           return 100;
         }
-        const diff = Math.random() * 10;
-        return Math.min(oldProgress + diff, 100);
+        return Math.min(oldProgress + incrementAmount, 100);
       });
-    }, 200);
+    }, 80); // Faster interval
 
     return () => {
       clearInterval(timer);
     };
   }, []);
+
+  // Prevent hydration mismatch by not rendering until mounted
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <AnimatePresence>

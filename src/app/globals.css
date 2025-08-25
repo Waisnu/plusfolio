@@ -148,11 +148,11 @@ html {
 
 @theme inline {
   @keyframes marquee {
-  from {
-    transform: translateX(0);
+    0% {
+      transform: translateX(0);
     }
-  to {
-    transform: translateX(calc(-100% - var(--gap)));
+    100% {
+      transform: translateX(-50%);
     }
   }
 }

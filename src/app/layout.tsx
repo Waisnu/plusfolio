@@ -3,7 +3,6 @@ import './globals.css'
 import SiteLoader from '@/components/layout/site-loader'
 import { fontClassNames, fontVariables } from '@/lib/font-optimization'
 import { PreloadingScript } from '@/components/ui/preloading-script'
-import { PerformanceMonitor } from '@/components/ui/performance-monitor'
 
 export const metadata: Metadata = {
   title: 'PlusFolio - AI-Powered Website Analysis',
@@ -24,7 +23,6 @@ export default function RootLayout({
       <body className={`${fontClassNames} bg-dark-950 text-white min-h-screen`}>
         <SiteLoader />
         {children}
-        <PerformanceMonitor />
       </body>
     </html>
   )

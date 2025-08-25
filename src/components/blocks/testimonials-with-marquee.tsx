@@ -62,27 +62,29 @@ export function TestimonialsSection({
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
         >
-          <div className="group flex overflow-hidden p-2 [--gap:1rem] [gap:var(--gap)] flex-row [--duration:30s]">
-            {/* First set of testimonials */}
+          <div className="group flex overflow-hidden p-2 [--gap:1rem] [gap:var(--gap)] flex-row [--duration:25s]">
+            {/* First marquee track */}
             <div className="flex shrink-0 justify-around [gap:var(--gap)] animate-marquee flex-row group-hover:[animation-play-state:paused]">
               {testimonials.map((testimonial, i) => (
                 <TestimonialCard 
-                  key={`first-${i}`}
+                  key={`track1-${i}`}
                   {...testimonial}
                 />
               ))}
-              {/* Duplicate for seamless loop */}
+            </div>
+            {/* Second marquee track for seamless loop */}
+            <div className="flex shrink-0 justify-around [gap:var(--gap)] animate-marquee flex-row group-hover:[animation-play-state:paused]">
               {testimonials.map((testimonial, i) => (
                 <TestimonialCard 
-                  key={`second-${i}`}
+                  key={`track2-${i}`}
                   {...testimonial}
                 />
               ))}
             </div>
           </div>
 
-          <div className="pointer-events-none absolute inset-y-0 left-0 hidden w-1/3 bg-gradient-to-r from-background sm:block" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/3 bg-gradient-to-l from-background sm:block" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-background" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-background" />
         </motion.div>
       </div>
     </section>
