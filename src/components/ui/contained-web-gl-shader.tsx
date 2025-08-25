@@ -1,19 +1,14 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useCallback } from "react"
 import * as THREE from "three"
+import { SHADER_CONFIG } from "@/lib/constants"
+import type { WebGLRefs } from "@/types"
 
 export function ContainedWebGLShader() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
-  const sceneRef = useRef<{
-    scene: THREE.Scene | null
-    camera: THREE.OrthographicCamera | null
-    renderer: THREE.WebGLRenderer | null
-    mesh: THREE.Mesh | null
-    uniforms: any
-    animationId: number | null
-  }>({
+  const sceneRef = useRef<WebGLRefs>({
     scene: null,
     camera: null,
     renderer: null,
@@ -21,6 +16,15 @@ export function ContainedWebGLShader() {
     uniforms: null,
     animationId: null,
   })
+
+  const animate = useCallback(() => {
+    const { current: refs } = sceneRef
+    if (refs.uniforms) refs.uniforms.time.value += SHADER_CONFIG.animation.timeIncrement
+    if (refs.renderer && refs.scene && refs.camera) {
+      refs.renderer.render(refs.scene, refs.camera)
+    }
+    refs.animationId = requestAnimationFrame(animate)
+  }, [])
 
   useEffect(() => {
     if (!canvasRef.current || !containerRef.current) return
@@ -74,9 +78,9 @@ export function ContainedWebGLShader() {
       refs.uniforms = {
         resolution: { value: [rect.width, rect.height] },
         time: { value: 0.0 },
-        xScale: { value: 1.0 },
-        yScale: { value: 0.5 },
-        distortion: { value: 0.05 },
+        xScale: { value: SHADER_CONFIG.uniforms.xScale },
+        yScale: { value: SHADER_CONFIG.uniforms.yScale },
+        distortion: { value: SHADER_CONFIG.uniforms.distortion },
       }
 
       const position = [
@@ -105,14 +109,6 @@ export function ContainedWebGLShader() {
       handleResize()
     }
 
-    const animate = () => {
-      if (refs.uniforms) refs.uniforms.time.value += 0.01
-      if (refs.renderer && refs.scene && refs.camera) {
-        refs.renderer.render(refs.scene, refs.camera)
-      }
-      refs.animationId = requestAnimationFrame(animate)
-    }
-
     const handleResize = () => {
       if (!refs.renderer || !refs.uniforms || !containerRef.current) return
       
@@ -128,23 +124,38 @@ export function ContainedWebGLShader() {
     const initTimer = setTimeout(() => {
       initScene()
       animate()
-    }, 100)
+    }, SHADER_CONFIG.animation.initDelay)
 
     const resizeObserver = new ResizeObserver(handleResize)
     resizeObserver.observe(container)
 
     return () => {
       clearTimeout(initTimer)
-      if (refs.animationId) cancelAnimationFrame(refs.animationId)
+      if (refs.animationId) {
+        cancelAnimationFrame(refs.animationId)
+        refs.animationId = null
+      }
       resizeObserver.disconnect()
+      
+      // Comprehensive cleanup
       if (refs.mesh) {
         refs.scene?.remove(refs.mesh)
         refs.mesh.geometry.dispose()
         if (refs.mesh.material instanceof THREE.Material) {
           refs.mesh.material.dispose()
         }
+        refs.mesh = null
       }
-      refs.renderer?.dispose()
+      
+      if (refs.renderer) {
+        refs.renderer.dispose()
+        refs.renderer = null
+      }
+      
+      // Clear references
+      refs.scene = null
+      refs.camera = null
+      refs.uniforms = null
     }
   }, [])
 

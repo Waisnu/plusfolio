@@ -29,6 +29,7 @@ graph TB
         S2[Report Generator]
         S3[Score Calculator]
         S4[Authentication Service]
+        S5[User Dashboard Service]
     end
     
     subgraph "External APIs"
@@ -36,6 +37,8 @@ graph TB
         E2[CaptureKit API]
         E3[Gemini 2.5 Flash]
         E4[Stripe API]
+        E5[Google OAuth]
+        E6[GitHub OAuth & API]
     end
     
     subgraph "Data Layer"
@@ -50,6 +53,7 @@ graph TB
     A2 --> A3
     A3 --> S1
     A3 --> S4
+    A3 --> S5
     
     S1 --> E1
     S1 --> E2
@@ -57,6 +61,9 @@ graph TB
     S1 --> S2
     S2 --> S3
     S4 --> E4
+    S4 --> E5
+    S4 --> E6
+    S5 --> E6
     
     S1 --> D1
     S2 --> D2
@@ -70,12 +77,61 @@ graph TB
     
     class U1,U2 user
     class A1,A2,A3 app
-    class S1,S2,S3,S4 service
-    class E1,E2,E3,E4 external
+    class S1,S2,S3,S4,S5 service
+    class E1,E2,E3,E4,E5,E6 external
     class D1,D2,D3 data
 ```
 
-### **2. Website Analysis Technical Flow**
+### 2. User Onboarding & GitHub Integration Flow
+```mermaid
+graph TD
+    A[User visits PlusFolio] --> B{Chooses to Register/Login}
+    B --> C[Clicks 'Sign in with GitHub']
+    
+    C --> D[Redirect to GitHub OAuth]
+    D --> E{User Authorizes App?}
+    E -->|No| F[Redirect back, show error]
+    E -->|Yes| G[Receive Auth Code from GitHub]
+    
+    G --> H[Backend exchanges code for Access Token]
+    H --> I{Token Received?}
+    I -->|No| J[Handle Auth Error]
+    I -->|Yes| K[Fetch User Profile from GitHub API]
+
+    K --> L{User Exists in DB?}
+    L -->|No| M[Create New User in `users` table]
+    L -->|Yes| N[Find Existing User]
+
+    M --> O[Store GitHub token in `user_connections`]
+    N --> O
+
+    O --> P[Generate Session Token (JWT)]
+    P --> Q[Set Secure Cookie & Redirect to Dashboard]
+
+    Q --> R{First Time Login?}
+    R -->|No| T[Show Populated Dashboard]
+    R -->|Yes| S[Display Onboarding: 'Import Repositories']
+
+    S --> U{User starts import?}
+    U -->|No| V[Allow user to explore dashboard]
+    U -->|Yes| W[Fetch Repos from GitHub API]
+
+    W --> X[User selects repos to import]
+    X --> Y[Save selected repos to `repositories` table]
+    Y --> Z[Display imported repos on dashboard]
+
+    classDef action fill:#e3f2fd
+    classDef decision fill:#fff3e0
+    classDef process fill:#e8f5e8
+    classDef error fill:#ffebee
+    
+    class A,C,Q,T,V,Z action
+    class B,E,I,L,R,U decision
+    class D,G,H,K,M,N,O,P,S,W,X,Y process
+    class F,J error
+```
+
+### 3. Website Analysis Technical Flow
 
 ```mermaid
 graph TD
@@ -134,7 +190,7 @@ graph TD
     class K1,K2,K3 success
 ```
 
-### **3. Database Operations Flow**
+### 4. Database Operations Flow
 
 ```mermaid
 graph TD
@@ -181,11 +237,12 @@ graph TD
     class Q error
 ```
 
-### **4. Authentication & Authorization Flow**
+### 5. Authentication & Authorization Flow
+This is the general flow for an already authenticated user making a request.
 
 ```mermaid
 graph TD
-    A[User Access Request] --> B{Authenticated?}
+    A[User Access Request] --> B{Authenticated? (has valid cookie)}
     B -->|No| C[Redirect to Login]
     B -->|Yes| D{Token Valid?}
     
@@ -228,7 +285,7 @@ graph TD
     class V error
 ```
 
-### **5. Payment Processing Flow**
+### 6. Payment Processing Flow
 
 ```mermaid
 graph TD

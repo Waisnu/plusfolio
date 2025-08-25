@@ -107,9 +107,11 @@ PlusFolio combines **web crawling**, **visual analysis**, and **AI-powered insig
 |:---------------|:---------------|:--------------------|:------------------------|
 | **V1.1-201** | Shareable Reports | Professional portfolio enhancement | Increased viral coefficient | Medium |
 | **V1.1-202** | Analysis Modes | Audience-specific feedback (recruiter/peer/client view) | Higher conversion rates | High |
-| **V1.1-203** | User Accounts | Report history and progress tracking | Increased retention | Low |
+| **V1.1-203** | OAuth Sign-Up (Google/GitHub) | As a user, I want to sign up/log in with my Google or GitHub account so I can quickly access my report history and track my progress. | Reduces signup friction, increases user retention. | Medium |
 | **V1.1-204** | PDF Export | Professional presentation capability | Premium feature adoption | Medium |
 | **V1.1-205** | Subscription Model | Free tier (3 reports/mo) → Pro tier ($12/mo) | Revenue generation | Low |
+| **V1.1-206** | GitHub Repo Import | As a developer, I want to optionally connect my GitHub account to import my repositories, so I can automatically populate my portfolio with real project data. | Core differentiator, massive value-add, drives pro-tier adoption. | High |
+| **V1.1-207** | Personal Dashboard | As a user, I want a personal dashboard where I can view my past reports, track my PlusFolio score over time, and manage my account settings. | Increases user engagement and provides a home for new features and pro-tier upsells. | Medium |
 
 ---
 

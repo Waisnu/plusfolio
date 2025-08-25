@@ -6,91 +6,69 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter }
 import { Badge } from "@/components/ui/badge"
 import { Footer } from "@/components/ui/footer"
 import { ContainedWebGLShader } from "@/components/ui/contained-web-gl-shader"
-import { Github, Twitter, Linkedin, Mail, Sparkles, Rocket, Bell, Users, Star } from "lucide-react"
+import { Github, Twitter, Linkedin, Mail, Sparkles, Rocket, Bell, Users, Star, Check } from "lucide-react"
 import { motion } from "framer-motion"
 import { useState, useRef } from "react"
 import confetti from "canvas-confetti"
+import { validateEmail, sanitizeInput } from "@/lib/validation"
+import { APP_CONFIG, SOCIAL_LINKS, MAIN_LINKS, LEGAL_LINKS, UI_CONFIG } from "@/lib/constants"
+import { fadeInUp } from "@/lib/animations"
+import type { FooterData, FormState } from "@/types"
 
 export default function ModernWishlist() {
   const [email, setEmail] = useState("")
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [emailError, setEmailError] = useState("")
+  const [formState, setFormState] = useState<FormState>({
+    isSubmitting: false,
+    isSubmitted: false,
+    error: ""
+  })
   const formRef = useRef<HTMLDivElement>(null)
 
-  const footerData = {
+  const footerData: FooterData = {
     logo: <div className="w-8 h-8 bg-yellow-400 rounded-lg flex items-center justify-center">
       <span className="text-black font-bold text-lg">P</span>
     </div>,
-    brandName: "PlusFolio",
-    socialLinks: [
-      {
-        icon: <Twitter className="w-4 h-4" />,
-        href: "#",
-        label: "Twitter"
-      },
-      {
-        icon: <Github className="w-4 h-4" />,
-        href: "#",
-        label: "GitHub"
-      },
-      {
-        icon: <Linkedin className="w-4 h-4" />,
-        href: "#",
-        label: "LinkedIn"
-      }
-    ],
-    mainLinks: [
-      { href: "#features", label: "Features" },
-      { href: "#pricing", label: "Pricing" },
-      { href: "#docs", label: "Documentation" },
-      { href: "#blog", label: "Blog" }
-    ],
-    legalLinks: [
-      { href: "#privacy", label: "Privacy Policy" },
-      { href: "#terms", label: "Terms of Service" },
-      { href: "#contact", label: "Contact" }
-    ],
+    brandName: APP_CONFIG.name,
+    socialLinks: SOCIAL_LINKS.map(link => ({
+      icon: link.icon === 'Twitter' ? <Twitter className="w-4 h-4" /> :
+            link.icon === 'Github' ? <Github className="w-4 h-4" /> :
+            <Linkedin className="w-4 h-4" />,
+      href: link.href,
+      label: link.label
+    })),
+    mainLinks: MAIN_LINKS,
+    legalLinks: LEGAL_LINKS,
     copyright: {
-      text: "© 2024 PlusFolio. All rights reserved.",
-      license: "AI-powered website analysis tool"
+      text: `© 2024 ${APP_CONFIG.name}. All rights reserved.`,
+      license: APP_CONFIG.description
     }
   }
 
-  const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return emailRegex.test(email)
-  }
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value
+    const value = sanitizeInput(e.target.value)
     setEmail(value)
-    if (emailError && validateEmail(value)) {
-      setEmailError("")
+    if (formState.error && validateEmail(value).success) {
+      setFormState(prev => ({ ...prev, error: "" }))
     }
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
-    if (!email.trim()) {
-      setEmailError("Email is required")
+    const validation = validateEmail(email)
+    if (!validation.success) {
+      setFormState(prev => ({ ...prev, error: validation.error || "Invalid email" }))
       return
     }
     
-    if (!validateEmail(email)) {
-      setEmailError("Please enter a valid email address")
-      return
-    }
+    setFormState(prev => ({ ...prev, isSubmitting: true, error: "" }))
     
-    setIsSubmitting(true)
-    setEmailError("")
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1500))
+      
+      setFormState(prev => ({ ...prev, isSubmitting: false, isSubmitted: true }))
     
     // Trigger confetti
     if (formRef.current) {
@@ -113,12 +91,15 @@ export default function ModernWishlist() {
         ],
       })
     }
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false)
-      setEmail("")
-    }, 3000)
+      
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setFormState({ isSubmitting: false, isSubmitted: false, error: "" })
+        setEmail("")
+      }, 3000)
+    } catch (error) {
+      setFormState(prev => ({ ...prev, isSubmitting: false, error: "Something went wrong. Please try again." }))
+    }
   }
 
 
@@ -173,19 +154,19 @@ export default function ModernWishlist() {
                         value={email}
                         onChange={handleEmailChange}
                         className={`pl-10 h-12 text-base bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:bg-white/20 focus:border-white/40 ${
-                          emailError ? 'border-red-400 focus:border-red-400' : ''
-                        } ${isSubmitted ? 'border-green-400' : ''}`}
-                        disabled={isSubmitting || isSubmitted}
+                          formState.error ? 'border-red-400 focus:border-red-400' : ''
+                        } ${formState.isSubmitted ? 'border-green-400' : ''}`}
+                        disabled={formState.isSubmitting || formState.isSubmitted}
                         aria-label="Email address for waitlist"
                       />
                     </div>
-                    {emailError && (
+                    {formState.error && (
                       <motion.p 
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="text-red-400 text-sm ml-1"
                       >
-                        {emailError}
+                        {formState.error}
                       </motion.p>
                     )}
                   </div>
@@ -193,9 +174,9 @@ export default function ModernWishlist() {
                     type="submit" 
                     size="lg" 
                     className="w-full h-12 text-base font-semibold bg-white text-black hover:bg-white/90 transition-all"
-                    disabled={isSubmitting || isSubmitted}
+                    disabled={formState.isSubmitting || formState.isSubmitted}
                   >
-                    {isSubmitting ? (
+                    {formState.isSubmitting ? (
                       <>
                         <motion.div
                           animate={{ rotate: 360 }}
@@ -204,7 +185,7 @@ export default function ModernWishlist() {
                         />
                         Joining Waitlist...
                       </>
-                    ) : isSubmitted ? (
+                    ) : formState.isSubmitted ? (
                       <>
                         <Check className="h-4 w-4 mr-2" />
                         Welcome to the Waitlist!
@@ -264,15 +245,15 @@ export default function ModernWishlist() {
                   viewport={{ once: true }}
                 >
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-white">500+</div>
+                    <div className="text-2xl font-bold text-white">{UI_CONFIG.maxUsers}</div>
                     <div className="text-xs text-white/60">Members</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-white">24h</div>
+                    <div className="text-2xl font-bold text-white">{UI_CONFIG.responseTime}</div>
                     <div className="text-xs text-white/60">Response Time</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-white">100%</div>
+                    <div className="text-2xl font-bold text-white">{UI_CONFIG.freeAccess}</div>
                     <div className="text-xs text-white/60">Free Access</div>
                   </div>
                 </motion.div>

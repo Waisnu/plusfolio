@@ -32,18 +32,21 @@ graph TB
         D[Rate Limiting]
         E[Authentication]
     end
-    
-    subgraph "Core Services"
+
+    subgraph "User-Facing Services"
         F[Analysis Orchestrator]
         G[Report Generator]
         H[Score Calculator]
+        U[User Dashboard]
     end
     
-    subgraph "External APIs"
+    subgraph "External APIs & Auth"
         I[Firecrawl API]
         J[CaptureKit API]
         K[Gemini API]
         L[Backup Services]
+        AUTH_G[Google OAuth]
+        AUTH_GH[GitHub OAuth]
     end
     
     subgraph "Data Layer"
@@ -57,11 +60,15 @@ graph TB
     C --> D
     D --> E
     E --> F
+    E --> U
+    AUTH_G --> E
+    AUTH_GH --> E
     F --> I
     F --> J
     F --> K
     F --> G
     G --> H
+    U --> M
     F --> M
     G --> N
     H --> O
@@ -360,11 +367,26 @@ interface AIServiceConfig {
 CREATE TABLE users (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   email TEXT UNIQUE NOT NULL,
+  name TEXT,
+  avatar_url TEXT,
+  provider TEXT, -- e.g., 'google', 'github', 'email'
+  provider_id TEXT, -- The user's ID from the provider
   created_at TIMESTAMP DEFAULT NOW(),
   subscription_tier TEXT DEFAULT 'free',
   subscription_expires_at TIMESTAMP,
   monthly_report_count INTEGER DEFAULT 0,
   last_report_reset DATE DEFAULT CURRENT_DATE
+);
+
+CREATE TABLE user_connections (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+    provider TEXT NOT NULL, -- e.g., 'github'
+    access_token TEXT NOT NULL,
+    refresh_token TEXT,
+    scopes TEXT[],
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
 -- Website analysis reports  
@@ -697,6 +719,12 @@ interface PublicAPI {
     response: ReportSummary[],
     auth: 'Bearer token required',
     pagination: 'Cursor-based'
+  },
+
+  'GET /api/user/dashboard': {
+      response: DashboardData,
+      auth: 'Bearer token required',
+      description: 'Fetches all data needed for the personal dashboard'
   }
 }
 ```

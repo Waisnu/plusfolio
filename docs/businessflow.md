@@ -19,17 +19,18 @@ graph TB
     B --> C{Satisfied with Results?}
     C -->|Yes| D[Creates Account]
     C -->|No| E[Leaves - Improve Product]
-    D --> F[Uses Free Tier - 3/month]
-    F --> G{Hits Free Limit?}
-    G -->|Yes| H[Upgrade Prompt]
-    G -->|No| I[Continues Free Usage]
-    H --> J{Converts to Pro?}
-    J -->|Yes| K[Pro User - $12/month]
-    J -->|No| L[Waits for Next Month]
-    K --> M[Unlimited Reports]
-    M --> N[Potential Enterprise Upgrade]
-    I --> F
-    L --> F
+    D --> F[Onboarding & Dashboard]
+    F --> G[Uses Free Tier - 3/month]
+    G --> H{Hits Free Limit?}
+    H -->|Yes| I[Upgrade Prompt]
+    H -->|No| J[Continues Free Usage]
+    I --> K{Converts to Pro?}
+    K -->|Yes| L[Pro User - $12/month]
+    K -->|No| M[Waits for Next Month]
+    L --> N[Unlimited Reports]
+    N --> O[Potential Enterprise Upgrade]
+    J --> G
+    M --> G
 ```
 
 ---
@@ -60,9 +61,9 @@ journey
       Reviews report results                  : 7: Alex
       Implements suggestions                  : 6: Alex
     section Conversion
-      Hits 3-report limit                    : 3: Alex
-      Considers upgrade                       : 5: Alex
-      Subscribes to Pro                       : 7: Alex
+      Creates Account via GitHub              : 8: Alex
+      Lands on Personal Dashboard             : 7: Alex
+      Connects Repositories                 : 9: Alex
     section Retention
       Analyzes client projects                : 8: Alex
       Shares reports with clients             : 9: Alex
@@ -94,11 +95,13 @@ journey
 ```
 4. Account Registration
    - Creates account to save report
-   - Uses GitHub OAuth for quick signup
-   - Receives welcome email with tips
+   - Uses GitHub or Google OAuth for a 1-click signup
+   - Is redirected to their new personal dashboard
+   - Follows onboarding prompts to connect their GitHub account
+   - Imports their top 3 repositories to their portfolio profile
 
 5. Free Tier Exploration
-   - Analyzes personal projects
+   - Analyzes personal projects from the dashboard
    - Tests different page types
    - Shares report with developer friends
    - Uses 2-3 reports per month consistently
@@ -337,25 +340,36 @@ graph TB
 
 ### **Onboarding Journey**
 
+This flow begins immediately after a user successfully creates an account.
+
 ```mermaid
 graph TD
-    A[User Signs Up] --> B[Welcome Email]
-    B --> C[First Report Guidance]
-    C --> D[Product Tour]
-    D --> E[Feature Discovery]
-    E --> F{Completes Setup?}
-    F -->|Yes| G[Success State]
-    F -->|No| H[Follow-up Sequence]
+    A[User Signs Up via OAuth] --> B[Redirect to /dashboard]
+    B --> C{First Time Login?}
+    C -->|Yes| D[Show Welcome Modal & Onboarding Steps]
+    C -->|No| E[Display Existing Dashboard]
     
-    G --> I[Regular Usage Pattern]
-    H --> J{Re-engages?}
-    J -->|Yes| G
-    J -->|No| K[At-risk User]
+    D --> F[Step 1: Connect GitHub]
+    F --> G{User Connects GitHub?}
+    G -->|Yes| H[Step 2: Import Repositories]
+    G -->|No| I[Show 'Skip for now' option]
+    
+    H --> J{User Selects Repos?}
+    J -->|Yes| K[Step 3: Run First Analysis on Repo]
+    J -->|No| I
+    
+    K --> L[Show report on dashboard]
+    I --> E
+    
+    E --> M[User interacts with dashboard features]
+    M --> N[Analyzes a URL]
+    M --> O[Views past reports]
+    M --> P[Manages account settings]
 ```
 
 #### **Email Sequence for New Users**
 ```
-Day 0: Welcome + First Steps
+Day 0: Welcome & Your New Dashboard
 - Welcome message with quick start guide
 - Link to product tour and best practices
 - Encourage first report analysis

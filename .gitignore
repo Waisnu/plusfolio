@@ -67,3 +67,6 @@ coverage/
 *.tar.gz
 
 
+.docs/
+docs/
+*.docs/

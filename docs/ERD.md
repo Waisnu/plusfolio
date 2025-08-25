@@ -40,11 +40,6 @@ CREATE TABLE users (
   email TEXT UNIQUE NOT NULL,
   email_verified BOOLEAN DEFAULT false,
   
-  -- Authentication
-  auth_provider TEXT NOT NULL DEFAULT 'email', -- 'email', 'google', 'github'
-  auth_provider_id TEXT,
-  password_hash TEXT, -- Only for email auth
-  
   -- Profile information
   full_name TEXT,
   avatar_url TEXT,
@@ -90,6 +85,54 @@ CREATE INDEX idx_users_subscription ON users(subscription_tier, subscription_sta
 CREATE INDEX idx_users_stripe_customer ON users(stripe_customer_id);
 CREATE INDEX idx_users_created_at ON users(created_at);
 CREATE INDEX idx_users_last_login ON users(last_login_at);
+
+-- New table for authentications
+CREATE TABLE user_authentications (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  provider TEXT NOT NULL, -- 'email', 'google', 'github'
+  provider_id TEXT NOT NULL, -- User's ID from the provider
+  password_hash TEXT, -- Only for 'email' provider
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  UNIQUE(provider, provider_id)
+);
+
+CREATE INDEX idx_user_auth_user_id ON user_authentications(user_id);
+
+-- New table for service connections
+CREATE TABLE user_connections (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  provider TEXT NOT NULL, -- e.g., 'github'
+  access_token TEXT NOT NULL,
+  refresh_token TEXT,
+  scopes TEXT[],
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  UNIQUE(user_id, provider)
+);
+
+CREATE INDEX idx_user_connections_user_id ON user_connections(user_id);
+
+-- New table for imported repositories
+CREATE TABLE repositories (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    github_id BIGINT UNIQUE NOT NULL,
+    name TEXT NOT NULL,
+    full_name TEXT NOT NULL,
+    description TEXT,
+    language TEXT,
+    stargazers_count INT,
+    forks_count INT,
+    html_url TEXT,
+    imported_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    last_synced_at TIMESTAMP WITH TIME ZONE
+);
+
+CREATE INDEX idx_repositories_user_id ON repositories(user_id);
+
 ```
 
 ### 2.2. Reports Entity
@@ -343,6 +386,9 @@ erDiagram
     users ||--o{ reports : creates
     users ||--o{ feedback : provides
     users ||--o{ api_usage : generates
+    users ||--o{ user_authentications : has
+    users ||--o{ user_connections : connects_with
+    users ||--o{ repositories : imports
     reports ||--o{ feedback : receives
     reports ||--o{ api_usage : tracks
     reports ||--o{ report_categories : categorized_as
@@ -358,6 +404,28 @@ erDiagram
         timestamp created_at
         jsonb preferences
         integer monthly_report_count
+    }
+
+    user_authentications {
+        uuid id PK
+        uuid user_id FK
+        text provider
+        text provider_id
+    }
+
+    user_connections {
+        uuid id PK
+        uuid user_id FK
+        text provider
+        text access_token
+    }
+
+    repositories {
+        uuid id PK
+        uuid user_id FK
+        text name
+        text language
+        int stargazers_count
     }
     
     reports {
