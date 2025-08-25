@@ -1,6 +1,7 @@
 'use client'
 
 import dynamic from 'next/dynamic'
+import { motion } from 'framer-motion'
 
 const IconCloud = dynamic(() => import("@/components/ui/interactive-icon-cloud").then(mod => ({ default: mod.IconCloud })), { 
   ssr: false,
@@ -45,22 +46,46 @@ export default function Developer() {
   return (
     <div className="py-24 bg-gradient-to-tr from-slate-900/5 via-blue-900/10 to-purple-900/5">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl leading-tight">
+        <motion.div 
+          className="text-center mb-20"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <motion.h2 
+            className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl leading-tight"
+            initial={{ y: 30, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          >
             Universal compatibility with 
             <br />
             <span className="text-primary">modern web technologies</span>
-          </h2>
-          <p className="mt-6 text-xl leading-8 text-muted-foreground max-w-3xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            className="mt-6 text-xl leading-8 text-muted-foreground max-w-3xl mx-auto"
+            initial={{ y: 30, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          >
             Our AI analyzes websites regardless of the underlying technology. From React SPAs to WordPress sites, 
             get comprehensive insights that focus on what users see, not just the code beneath.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Interactive Icon Cloud */}
-        <div className="relative flex h-full w-full max-w-[32rem] items-center justify-center overflow-hidden px-20 pb-20 pt-8 mx-auto">
+        <motion.div 
+          className="relative flex h-full w-full max-w-[32rem] items-center justify-center overflow-hidden px-20 pb-20 pt-8 mx-auto"
+          initial={{ y: 60, opacity: 0, scale: 0.9 }}
+          whileInView={{ y: 0, opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1.0, delay: 0.6, ease: "easeOut" }}
+        >
           <IconCloud iconSlugs={iconSlugs} />
-        </div>
+        </motion.div>
       </div>
     </div>
   )

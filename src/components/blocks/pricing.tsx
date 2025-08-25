@@ -70,16 +70,40 @@ export function Pricing({
 
   return (
     <div className="container py-20">
-      <div className="text-center space-y-4 mb-12">
-        <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
+      <motion.div 
+        className="text-center space-y-4 mb-12"
+        initial={{ y: 50, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <motion.h2 
+          className="text-4xl font-bold tracking-tight sm:text-5xl"
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+        >
           {title}
-        </h2>
-        <p className="text-muted-foreground text-lg whitespace-pre-line">
+        </motion.h2>
+        <motion.p 
+          className="text-muted-foreground text-lg whitespace-pre-line"
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+        >
           {description}
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
 
-      <div className="flex justify-center mb-10">
+      <motion.div 
+        className="flex justify-center mb-10"
+        initial={{ y: 30, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+      >
         <label className="relative inline-flex items-center cursor-pointer">
           <Label>
             <Switch
@@ -93,7 +117,7 @@ export function Pricing({
         <span className="ml-2 font-semibold">
           Annual billing <span className="text-primary">(Save 20%)</span>
         </span>
-      </div>
+      </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 sm:2 gap-4">
         {plans.map((plan, index) => (
