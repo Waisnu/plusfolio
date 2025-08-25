@@ -45,57 +45,51 @@ export default function Hero() {
 
         {/* Hero Content */}
         <div className="flex items-center justify-center min-h-[calc(100vh-100px)] px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl text-left">
+          <div className="mx-auto max-w-4xl text-center">
             
             {/* Small Badge */}
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8">
               <span className="text-xs font-medium text-white/90">⚡ AI Website Analysis</span>
             </div>
 
-            {/* Main Headline - Based on PRD positioning */}
+            {/* Main Headline - Customer-focused, first-person */}
             <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl mb-6 font-heading">
-              The AI Design
+              Get instant feedback
               <br />
               <SparklesText 
-                text="Consultant" 
+                text="on my website" 
                 className="italic font-light gradient-text"
               />
               <br />
-              for Developers
+              from AI experts
             </h1>
             
-            {/* Description - Based on PRD value prop */}
-            <p className="max-w-2xl text-lg leading-8 text-white/80 sm:text-xl mb-12 font-light">
-              Transform hours of expensive consultation into minutes of actionable AI insights. 
-              Get consultant-grade feedback that empowers you to create 
-              <span className="text-cyan-300 font-semibold"> high-converting, user-friendly websites</span>.
+            {/* Description - Benefit-focused, addressing user pain */}
+            <p className="max-w-3xl mx-auto text-lg leading-8 text-white/80 sm:text-xl mb-12 font-light">
+              Skip expensive consultations. Get professional design feedback in 60 seconds. 
+              Discover what's stopping visitors from converting and 
+              <span className="text-cyan-300 font-semibold"> turn my website into a conversion machine</span>.
             </p>
 
             {/* URL Input Section */}
-            <div className="flex flex-col sm:flex-row items-start gap-4 max-w-2xl mb-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto mb-8">
               <Input
                 type="url"
-                placeholder="Enter your website URL"
+                placeholder="Enter my website URL"
                 className="flex-1 w-full px-6 py-4 text-lg h-14 bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder-white/60 focus:border-white/40 focus:ring-white/20 rounded-xl"
               />
               <Button 
                 size="lg" 
                 className="w-full sm:w-auto px-10 py-4 text-lg h-14 bg-white text-black hover:bg-white/90 font-semibold rounded-xl transition-all hover:scale-105"
               >
-                Get Started
+                Analyze my website
               </Button>
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-start gap-4">
-              <Button 
-                variant="outline"
-                size="lg" 
-                className="border-white/30 text-white hover:bg-white/10 hover:border-white/50 rounded-xl px-8 py-3 font-medium transition-all"
-              >
-                Pricing
-              </Button>
-            </div>
+            {/* Supporting text - addressing objections */}
+            <p className="text-white/60 text-sm">
+              ✓ Free analysis • ✓ No signup required • ✓ Results in 60 seconds
+            </p>
 
           </div>
         </div>
