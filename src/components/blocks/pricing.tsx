@@ -69,7 +69,7 @@ export function Pricing({
   };
 
   return (
-    <div className="container py-20">
+    <div className="container py-20 mx-auto">
       <motion.div 
         className="text-center space-y-4 mb-12"
         initial={{ y: 50, opacity: 0 }}
@@ -119,7 +119,7 @@ export function Pricing({
         </span>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 sm:2 gap-4">
+      <div className="flex flex-col md:flex-row gap-6 justify-center items-stretch max-w-5xl mx-auto">
         {plans.map((plan, index) => (
           <motion.div
             key={index}
@@ -127,32 +127,25 @@ export function Pricing({
             whileInView={
               isDesktop
                 ? {
-                    y: plan.isPopular ? -20 : 0,
+                    y: plan.isPopular ? -10 : 0,
                     opacity: 1,
-                    x: index === 2 ? -30 : index === 0 ? 30 : 0,
-                    scale: index === 0 || index === 2 ? 0.94 : 1.0,
+                    scale: plan.isPopular ? 1.05 : 1.0,
                   }
                 : {}
             }
             viewport={{ once: true }}
             transition={{
-              duration: 1.6,
+              duration: 1.2,
               type: "spring",
-              stiffness: 100,
-              damping: 30,
-              delay: 0.4,
+              stiffness: 80,
+              damping: 25,
+              delay: 0.2 * index,
               opacity: { duration: 0.5 },
             }}
             className={cn(
-              `rounded-2xl border-[1px] p-6 bg-background text-center lg:flex lg:flex-col lg:justify-center relative`,
-              plan.isPopular ? "border-primary border-2" : "border-border",
-              "flex flex-col",
-              !plan.isPopular && "mt-5",
-              index === 0 || index === 2
-                ? "z-0 transform translate-x-0 translate-y-0 -translate-z-[50px] rotate-y-[10deg]"
-                : "z-10",
-              index === 0 && "origin-right",
-              index === 2 && "origin-left"
+              `rounded-2xl border-[1px] p-6 bg-background text-center flex flex-col justify-between relative flex-1 min-w-[280px] max-w-[340px]`,
+              plan.isPopular ? "border-primary border-2 transform scale-105" : "border-border",
+              "shadow-lg hover:shadow-xl transition-all duration-300"
             )}
           >
             {plan.isPopular && (

@@ -3,7 +3,7 @@ import DeveloperTestimonials from '@/components/layout/DeveloperTestimonials'
 import { Features } from '@/components/ui/features-6'
 import Developer from '@/components/layout/Developer'
 import PricingSection from '@/components/layout/PricingSection'
-import CTA from '@/components/layout/CTA'
+import ModernWishlist from '@/components/layout/modern-wishlist'
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
       <Features />
       <Developer />
       <PricingSection />
-      <CTA />
+      <ModernWishlist />
     </main>
   )
 }

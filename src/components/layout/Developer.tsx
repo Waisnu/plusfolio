@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
+import { InfiniteSlider } from '@/components/ui/infinite-slider'
 
 const IconCloud = dynamic(() => import("@/components/ui/interactive-icon-cloud").then(mod => ({ default: mod.IconCloud })), { 
   ssr: false,
@@ -41,6 +42,31 @@ export default function Developer() {
     "supabase",
     "github",
     "git"
+  ]
+
+  const technologies = [
+    { name: "React", description: "Frontend Library" },
+    { name: "Next.js", description: "Full-Stack Framework" },
+    { name: "TypeScript", description: "Type-Safe JavaScript" },
+    { name: "Vue.js", description: "Progressive Framework" },
+    { name: "Angular", description: "Enterprise Platform" },
+    { name: "Svelte", description: "Compiled Framework" },
+    { name: "Node.js", description: "JavaScript Runtime" },
+    { name: "Express", description: "Web Framework" },
+    { name: "NestJS", description: "Enterprise Node.js" },
+    { name: "Django", description: "Python Framework" },
+    { name: "Laravel", description: "PHP Framework" },
+    { name: "WordPress", description: "CMS Platform" },
+    { name: "Shopify", description: "E-commerce Platform" },
+    { name: "Tailwind CSS", description: "Utility-First CSS" },
+    { name: "MongoDB", description: "NoSQL Database" },
+    { name: "PostgreSQL", description: "SQL Database" },
+    { name: "Docker", description: "Containerization" },
+    { name: "Kubernetes", description: "Orchestration" },
+    { name: "AWS", description: "Cloud Platform" },
+    { name: "Vercel", description: "Deployment Platform" },
+    { name: "Firebase", description: "Backend Service" },
+    { name: "Supabase", description: "Open Source Backend" }
   ]
 
   return (
@@ -85,6 +111,36 @@ export default function Developer() {
           transition={{ duration: 1.0, delay: 0.6, ease: "easeOut" }}
         >
           <IconCloud iconSlugs={iconSlugs} />
+        </motion.div>
+
+        {/* Infinite Technology Slider */}
+        <motion.div
+          className="mt-16"
+          initial={{ y: 40, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+        >
+          <InfiniteSlider 
+            gap={24} 
+            duration={30} 
+            durationOnHover={60}
+            className="w-full"
+          >
+            {technologies.map((tech, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center justify-center min-w-[200px] h-20 px-6 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg hover:bg-white/10 transition-colors"
+              >
+                <span className="text-sm font-semibold text-white">
+                  {tech.name}
+                </span>
+                <span className="text-xs text-white/60 mt-1">
+                  {tech.description}
+                </span>
+              </div>
+            ))}
+          </InfiniteSlider>
         </motion.div>
       </div>
     </div>

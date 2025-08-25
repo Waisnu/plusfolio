@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Button as MovingBorderButton } from "@/components/ui/moving-border"
 import { ShaderBackground } from "@/components/ui/shader-background"
 import SparklesText from "@/components/ui/sparkles-text"
 
@@ -53,12 +54,12 @@ export default function Hero() {
             </div>
 
             {/* Main Headline - Problem-focused, creating urgency */}
-            <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl mb-6 font-heading animate-fade-in-up animation-delay-400">
+            <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl mb-6 font-heading animate-fade-in-up animation-delay-400 leading-tight">
               Find Out Why Your
               <br />
               <SparklesText 
                 text="Visitors Aren't" 
-                className="italic font-light gradient-text"
+                className="italic font-light gradient-text inline-block py-2"
               />
               <br />
               Converting
@@ -75,15 +76,20 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto mb-8 animate-fade-in-up animation-delay-800">
               <Input
                 type="url"
-                placeholder="Enter your website URL"
-                className="flex-1 w-full px-6 py-4 text-lg h-14 bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder-white/60 focus:border-white/40 focus:ring-white/20 rounded-xl"
+                placeholder="Coming soon - in development..."
+                disabled
+                className="flex-1 w-full px-6 py-4 text-lg h-14 bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder-white/40 cursor-not-allowed opacity-70 rounded-xl"
               />
-              <Button 
-                size="lg" 
-                className="w-full sm:w-auto px-10 py-4 text-lg h-14 bg-white text-black hover:bg-white/90 font-semibold rounded-xl transition-all hover:scale-105"
+              <MovingBorderButton
+                onClick={() => document.getElementById('wishlist')?.scrollIntoView({ behavior: 'smooth' })}
+                borderRadius="1rem"
+                containerClassName="w-full sm:w-auto"
+                className="bg-slate-900/80 backdrop-blur-xl border-slate-700 text-white font-semibold text-base px-8 py-3 h-14"
+                borderClassName="bg-[radial-gradient(var(--blue-500)_40%,var(--cyan-500)_60%,transparent_80%)]"
+                duration={3000}
               >
-                Pinpoint the Problem
-              </Button>
+                Contact Us for Demo
+              </MovingBorderButton>
             </div>
 
             {/* Supporting text - addressing objections */}
