@@ -90,12 +90,7 @@ export default function Hero() {
               >
                 Contact Us for Demo
               </MovingBorderButton>
-            </div>
-
-            {/* Supporting text - competitive advantages */}
-            <p className="text-white/60 text-sm animate-fade-in animation-delay-1000">
-              ✓ Visual AI analysis (not just basic SEO) • ✓ Developer-focused insights • ✓ 60-second comprehensive reports
-            </p>
+            </div>          
 
           </div>
         </div>

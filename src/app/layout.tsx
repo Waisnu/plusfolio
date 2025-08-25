@@ -20,9 +20,10 @@ export default function RootLayout({
       <head>
         <PreloadingScript />
       </head>
-      <body className={`${fontClassNames} bg-dark-950 text-white min-h-screen`}>
-        <SiteLoader />
-        {children}
+      <body className={`${fontClassNames} bg-dark-950 text-white min-h-screen`} suppressHydrationWarning>
+        <SiteLoader>
+          {children}
+        </SiteLoader>
       </body>
     </html>
   )

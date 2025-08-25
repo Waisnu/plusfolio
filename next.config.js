@@ -24,7 +24,6 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
   productionBrowserSourceMaps: false,
-  optimizeFonts: true,
   // Reduce bundle size
   modularizeImports: {
     'lucide-react': {
@@ -32,8 +31,6 @@ const nextConfig = {
       preventFullImport: true,
     },
   },
-  // Enable SWC minification for better performance
-  swcMinify: true,
 }
 
 module.exports = withBundleAnalyzer(nextConfig)
