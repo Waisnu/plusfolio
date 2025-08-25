@@ -43,7 +43,7 @@ export const SOCIAL_LINKS = [
     href: "#", 
     label: "LinkedIn"
   }
-] as const;
+];
 
 // Navigation Links
 export const MAIN_LINKS = [
@@ -51,13 +51,13 @@ export const MAIN_LINKS = [
   { href: "#pricing", label: "Pricing" },
   { href: "#docs", label: "Documentation" },
   { href: "#blog", label: "Blog" }
-] as const;
+];
 
 export const LEGAL_LINKS = [
   { href: "#privacy", label: "Privacy Policy" },
   { href: "#terms", label: "Terms of Service" },
   { href: "#contact", label: "Contact" }
-] as const;
+];
 
 // Technology Configurations
 export const TECHNOLOGY_ICONS: string[] = [

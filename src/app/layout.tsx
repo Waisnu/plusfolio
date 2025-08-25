@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
 import SiteLoader from '@/components/layout/site-loader'
-
-const inter = Inter({ subsets: ['latin'] })
+import { fontClassNames, fontVariables } from '@/lib/font-optimization'
+import { PreloadingScript } from '@/components/ui/preloading-script'
+import { PerformanceMonitor } from '@/components/ui/performance-monitor'
 
 export const metadata: Metadata = {
   title: 'PlusFolio - AI-Powered Website Analysis',
@@ -17,10 +17,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.className} bg-dark-950 text-white min-h-screen`}>
+    <html lang="en" className={`dark ${fontVariables}`}>
+      <head>
+        <PreloadingScript />
+      </head>
+      <body className={`${fontClassNames} bg-dark-950 text-white min-h-screen`}>
         <SiteLoader />
         {children}
+        <PerformanceMonitor />
       </body>
     </html>
   )

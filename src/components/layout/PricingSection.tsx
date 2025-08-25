@@ -3,7 +3,7 @@ import { Pricing } from "@/components/blocks/pricing"
 export default function PricingSection() {
   const plans = [
     {
-      name: "Free",
+      name: "Starter",
       price: "0",
       yearlyPrice: "0",
       period: "forever",
@@ -21,42 +21,42 @@ export default function PricingSection() {
       isPopular: false,
     },
     {
-      name: "Pro",
-      price: "12",
-      yearlyPrice: "9",
+      name: "Plus",
+      price: "4", // Set to your target $4
+      yearlyPrice: "3", // Offers a 25% discount for annual payment
       period: "month",
       features: [
-        "Unlimited website analyses",
+        "50 website analyses per month", // Changed from "Unlimited"
         "Advanced AI design insights",
         "Conversion optimization tips",
         "Brand consistency analysis",
         "PDF report export",
         "Analysis history tracking",
-        "Priority support",
-        "API access (coming soon)"
+        "Standard support"
       ],
-      description: "Ideal for freelancers, agencies, and growing businesses",
-      buttonText: "Start Pro Trial",
+      description: "Ideal for freelancers and professionals",
+      buttonText: "Start Plus Trial",
       href: "#",
       isPopular: true,
     },
     {
-      name: "Enterprise",
-      price: "49",
-      yearlyPrice: "39",
+      name: "Plus Ultra",
+      price: "12", 
+      yearlyPrice: "10", //
       period: "month",
       features: [
-        "Everything in Pro",
-        "Team collaboration tools",
-        "Custom branding",
-        "Advanced analytics",
-        "Dedicated account manager",
-        "SLA guarantee",
-        "Custom integrations",
-        "On-premise deployment option"
+        "Everything in Plus",
+        "Unlimited website analyses", 
+        "Invite up to 2 team members", 
+        "Custom branding on PDF reports", // Great for agencies
+        "Advanced analytics dashboard",
+        "Priority support",
+        "API access (coming soon)",
+        "Custom integrations (coming soon)",
+        "Custom reports (coming soon)",
       ],
-      description: "For teams and enterprises with advanced needs",
-      buttonText: "Contact Sales",
+      description: "For small agencies and power users",
+      buttonText: "Start Ultra Trial",
       href: "#",
       isPopular: false,
     },
