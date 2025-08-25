@@ -63,7 +63,7 @@ export default function PricingSection() {
   ]
 
   return (
-    <section className="py-24 bg-gradient-to-br from-purple-900/5 via-blue-900/10 to-cyan-900/5">
+    <section id="pricing" className="py-24 bg-gradient-to-br from-purple-900/5 via-blue-900/10 to-cyan-900/5">
       <Pricing
         plans={plans}
         title="Simple, transparent pricing"

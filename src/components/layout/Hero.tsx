@@ -48,28 +48,28 @@ export default function Hero() {
         <div className="flex items-center justify-center min-h-[calc(100vh-100px)] px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
             
-            {/* Small Badge */}
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8 animate-scale-in animation-delay-300">
-              <span className="text-xs font-medium text-white/90">⚡ AI Website Analysis</span>
+            {/* Small Badge - Competitive Differentiation */}
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-sm border border-cyan-400/30 mb-8 animate-scale-in animation-delay-300">
+              <span className="text-sm font-medium text-cyan-200">🎯 First AI Design Consultant for Developers</span>
             </div>
 
-            {/* Main Headline - Problem-focused, creating urgency */}
+            {/* Main Headline - Developer-focused, unique positioning */}
             <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl mb-6 font-heading animate-fade-in-up animation-delay-400 leading-tight">
-              Find Out Why Your
+              Get AI-Powered
               <br />
               <SparklesText 
-                text="Visitors Aren't" 
+                text="Design Feedback" 
                 className="italic font-light gradient-text inline-block py-2"
               />
               <br />
-              Converting
+              That Actually Works
             </h1>
             
-            {/* Sub-headline - Solution-focused, value proposition */}
+            {/* Sub-headline - Competitive differentiation, developer-focused */}
             <p className="max-w-3xl mx-auto text-lg leading-8 text-white/80 sm:text-xl mb-12 font-light animate-fade-in-up animation-delay-600">
-              Get an instant AI audit of your website's usability and design. 
-              Skip the expensive consultations and receive a 
-              <span className="text-cyan-300 font-semibold"> free report with actionable insights</span> in 60 seconds.
+              Skip expensive consultations and generic analysis tools. Get 
+              <span className="text-cyan-300 font-semibold"> visual design + technical insights specifically built for developers</span>. 
+              Comprehensive analysis of your portfolio or project site in 60 seconds.
             </p>
 
             {/* URL Input Section */}
@@ -92,9 +92,9 @@ export default function Hero() {
               </MovingBorderButton>
             </div>
 
-            {/* Supporting text - addressing objections */}
+            {/* Supporting text - competitive advantages */}
             <p className="text-white/60 text-sm animate-fade-in animation-delay-1000">
-              ✓ Free analysis • ✓ No signup required • ✓ Results in 60 seconds
+              ✓ Visual AI analysis (not just basic SEO) • ✓ Developer-focused insights • ✓ 60-second comprehensive reports
             </p>
 
           </div>

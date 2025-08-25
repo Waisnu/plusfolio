@@ -65,8 +65,3 @@ coverage/
 *.tgz
 *.zip
 *.tar.gz
-
-
-.docs/
-docs/
-*.docs/

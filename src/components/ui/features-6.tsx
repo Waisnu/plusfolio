@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 export function Features() {
     return (
-        <section className="py-16 md:py-32">
+        <section id="features" className="py-16 md:py-32">
             <div className="mx-auto max-w-5xl space-y-12 px-6">
                 <motion.div 
                     className="relative z-10 grid items-center gap-4 md:grid-cols-2 md:gap-12"
@@ -21,7 +21,7 @@ export function Features() {
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                     >
-                        Stop guessing what's wrong with your website
+                        The only AI that combines visual design + technical analysis
                     </motion.h2>
                     <motion.p 
                         className="max-w-sm sm:ml-auto"
@@ -30,7 +30,7 @@ export function Features() {
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
                     >
-                        Get AI-powered insights that reveal exactly what's hurting your conversions and how to fix it – no design experience needed.
+                        Most tools focus on either design OR technical performance. We analyze BOTH – giving developers the complete picture they need to build better websites that convert.
                     </motion.p>
                 </motion.div>
                 <motion.div 
@@ -75,9 +75,9 @@ export function Features() {
                     >
                         <div className="flex items-center gap-2">
                             <Zap className="size-4 text-primary" />
-                            <h3 className="text-sm font-medium">60-Second Analysis</h3>
+                            <h3 className="text-sm font-medium">Developer-Native Speed</h3>
                         </div>
-                        <p className="text-muted-foreground text-sm">Get comprehensive feedback faster than opening Photoshop. No waiting, no delays.</p>
+                        <p className="text-muted-foreground text-sm">Faster than expensive consultations, more comprehensive than single-purpose tools. Get visual + technical insights in 60 seconds.</p>
                     </motion.div>
                     <motion.div 
                         className="space-y-2"
@@ -88,9 +88,9 @@ export function Features() {
                     >
                         <div className="flex items-center gap-2">
                             <Cpu className="size-4 text-primary" />
-                            <h3 className="text-sm font-medium">Expert-Level Insights</h3>
+                            <h3 className="text-sm font-medium">Visual AI Analysis</h3>
                         </div>
-                        <p className="text-muted-foreground text-sm">AI trained on thousands of high-converting websites gives you consultant-grade recommendations.</p>
+                        <p className="text-muted-foreground text-sm">Beyond basic SEO checks, our AI analyzes layout, typography, color theory, and UX principles - built specifically for developers.</p>
                     </motion.div>
                     <motion.div 
                         className="space-y-2"
@@ -101,9 +101,9 @@ export function Features() {
                     >
                         <div className="flex items-center gap-2">
                             <Lock className="size-4 text-primary" />
-                            <h3 className="text-sm font-medium">Privacy Protected</h3>
+                            <h3 className="text-sm font-medium">Developer-Focused Pricing</h3>
                         </div>
-                        <p className="text-muted-foreground text-sm">Your website data stays secure. We analyze publicly accessible pages only.</p>
+                        <p className="text-muted-foreground text-sm">Affordable $12/month pricing vs $49+ enterprise tools. Built for individual developers, not expensive corporate teams.</p>
                     </motion.div>
                     <motion.div 
                         className="space-y-2"
@@ -114,9 +114,9 @@ export function Features() {
                     >
                         <div className="flex items-center gap-2">
                             <Sparkles className="size-4 text-primary" />
-                            <h3 className="text-sm font-medium">Actionable Fixes</h3>
+                            <h3 className="text-sm font-medium">Comprehensive Coverage</h3>
                         </div>
-                        <p className="text-muted-foreground text-sm">Every insight comes with specific steps you can implement immediately, no guesswork.</p>
+                        <p className="text-muted-foreground text-sm">Design + Performance + SEO in one analysis. No need for multiple tools like competitors require.</p>
                     </motion.div>
                 </div>
             </div>

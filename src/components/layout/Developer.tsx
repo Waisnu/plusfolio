@@ -28,16 +28,17 @@ export default function Developer() {
             className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl leading-tight"
             {...fadeInUp(0.2)}
           >
-            Universal compatibility with 
+            Built specifically for developers,
             <br />
-            <span className="text-primary">modern web technologies</span>
+            <span className="text-primary">not generic marketing teams</span>
           </motion.h2>
           <motion.p 
             className="mt-6 text-xl leading-8 text-muted-foreground max-w-3xl mx-auto"
             {...fadeInUp(0.4)}
           >
-            Our AI analyzes websites regardless of the underlying technology. From React SPAs to WordPress sites, 
-            get comprehensive insights that focus on what users see, not just the code beneath.
+            While agency tools focus on lead generation and design tools serve marketing teams, 
+            we're the only AI that speaks your language - combining technical insights with visual design feedback 
+            specifically for portfolio sites, SaaS projects, and developer workflows.
           </motion.p>
         </motion.div>
 

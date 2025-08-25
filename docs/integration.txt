@@ -1,0 +1,29 @@
+Web Crawling & Screenshots
+
+Firecrawl API or Crawl4AI (self-hosted) for reliably crawling pages.
+
+CaptureKit or ScreenshotOne for automated full-page screenshots enabling visual AI analysis.
+
+SEO and Performance Analysis
+
+Google PageSpeed Insights API for site speed, accessibility, SEO audit.
+
+Moz, SEMrush, or Ahrefs APIs for domain authority, backlinks, keyword insights.
+
+AI Vision & Visual Analysis
+
+Anthropic Claude 3.5 Sonnet for in-depth visual and UX design analysis of screenshots.
+
+GPT-4 Vision (OpenAI) as a backup vision-text analysis model.
+
+Natural Language Processing & Report Generation
+
+Claude 3.5 or GPT-4 for analyzing page content, tone, NLP insights, and generating human-readable audit reports.
+
+Optionally, local LLMs (e.g., Ollama) for development and cost control.
+
+User Authentication & Workflow
+
+OAuth with Google and GitHub for fast, familiar user login and report history.
+
+GitHub API to optionally import user repositories for portfolio audits.

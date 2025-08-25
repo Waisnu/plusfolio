@@ -9,8 +9,15 @@
 
 ## 🎯 **Business Model Overview**
 
-### **Core Value Proposition**
-**"Transform your website into a career catalyst with AI-powered design feedback in 60 seconds"**
+### **Core Value Proposition (Competitively Refined)**
+**"The only AI that combines visual design analysis with technical insights—built specifically for developers"**
+
+### **Competitive Differentiation Statement**
+Unlike UX Pilot (UX-only) or traditional tools (manual), PlusFolio delivers **comprehensive AI analysis in 60 seconds**:
+- ✅ Visual design analysis (like UX Pilot)  
+- ✅ Technical SEO + performance (like Lighthouse)
+- ✅ Developer-focused workflow (GitHub integration)
+- ✅ Affordable B2C pricing (vs. agency tools)
 
 ### **Business Flow Summary**
 ```mermaid
@@ -32,6 +39,54 @@ graph TB
     J --> G
     M --> G
 ```
+
+---
+
+## 🎯 **Competitive Strategy & Market Positioning**
+
+### **Market Analysis Summary (January 2025)**
+
+Based on comprehensive competitive research across 15+ tools:
+
+**Key Findings:**
+- **UX Pilot** is the only direct AI competitor (moderate threat)
+- **Developer-focused AI analysis** is an underserved blue ocean market
+- **Strong price validation** at $49-99/month from adjacent tools
+- **Most tools focus** on agencies/enterprises, leaving B2C space open
+
+### **Strategic Positioning Framework**
+
+```mermaid
+graph TD
+    A[PlusFolio Positioning] --> B[Unique Differentiators]
+    B --> C[Technical + Visual AI]
+    B --> D[Developer-Native UX] 
+    B --> E[B2C Pricing Model]
+    B --> F[60-Second Analysis]
+    
+    A --> G[Competitive Moats]
+    G --> H[GitHub Integration]
+    G --> I[Open Source Scoring]
+    G --> J[Developer Community]
+    G --> K[Free Tier Strategy]
+```
+
+### **Go-to-Market Strategy vs. Competitors**
+
+**Phase 1: Blue Ocean Capture**
+- Target developer market before UX Pilot pivots
+- Establish developer community presence
+- Build GitHub/dev tool integrations
+
+**Phase 2: Feature Differentiation**
+- Maintain technical analysis advantage
+- Develop developer-specific insights
+- Build API for developer workflows
+
+**Phase 3: Market Defense**
+- Strengthen community moat
+- Expand to adjacent markets (founders, agencies)
+- Develop enterprise offerings
 
 ---
 

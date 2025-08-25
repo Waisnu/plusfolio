@@ -20,6 +20,10 @@ const PricingSection = dynamic(() => import('@/components/layout/PricingSection'
   loading: () => <OptimizedLoading className="h-64 w-full" size="lg" />
 })
 
+const DocsSection = dynamic(() => import('@/components/layout/DocsSection'), {
+  loading: () => <OptimizedLoading className="h-64 w-full" size="lg" />
+})
+
 const ModernWishlist = dynamic(() => import('@/components/layout/modern-wishlist'), {
   loading: () => <OptimizedLoading className="h-96 w-full" size="lg" />
 })
@@ -45,6 +49,10 @@ export default function Home() {
       
       <Suspense fallback={<OptimizedLoading className="h-64 w-full" size="lg" />}>
         <PricingSection />
+      </Suspense>
+      
+      <Suspense fallback={<OptimizedLoading className="h-64 w-full" size="lg" />}>
+        <DocsSection />
       </Suspense>
       
       <Suspense fallback={<OptimizedLoading className="h-96 w-full" size="lg" />}>

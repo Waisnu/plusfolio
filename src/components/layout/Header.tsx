@@ -23,8 +23,8 @@ export default function Header() {
             <a href="#pricing" className="text-white/80 hover:text-white px-4 py-2 text-sm font-medium transition-colors relative">
               Pricing  
             </a>
-            <a href="#about" className="text-white/80 hover:text-white px-4 py-2 text-sm font-medium transition-colors relative">
-              About
+            <a href="#docs" className="text-white/80 hover:text-white px-4 py-2 text-sm font-medium transition-colors relative">
+              Docs
             </a>
           </div>
 

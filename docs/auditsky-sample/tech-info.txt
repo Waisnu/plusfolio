@@ -1,0 +1,306 @@
+nalytics and Tracking
+View Global Trends
+MailerLite
+MailerLite Usage Statistics · Download List of All Websites using MailerLite
+
+Email newsletters made easy signup form.
+
+Marketing Automation
+
+Global Site Tag
+Global Site Tag Usage Statistics · Download List of All Websites using Global Site Tag
+
+Google's primary tag for Google Measurement/Conversion Tracking, Adwords and DoubleClick.
+
+Google Analytics
+Google Analytics Usage Statistics · Download List of All Websites using Google Analytics
+
+Google Analytics offers a host of compelling features and benefits for everyone from senior executives and advertising and marketing professionals to site owners and content developers.
+
+Application Performance · Audience Measurement · Visitor Count Tracking
+
+Widgets
+View Global Trends
+Yoast Plugins
+Yoast Plugins Usage Statistics · Download List of All Websites using Yoast Plugins
+
+SEO based plugins from Yoast.
+
+WordPress Plugins
+
+Yoast WordPress SEO Plugin
+Yoast WordPress SEO Plugin Usage Statistics · Download List of All Websites using Yoast WordPress SEO Plugin
+
+Functionality that helps you optimize your pages content, images titles, meta descriptions and more.
+
+Sitelinks Search Box
+Sitelinks Search Box Usage Statistics · Download List of All Websites using Sitelinks Search Box
+
+With Google sitelinks search box, people can reach your content more quickly from search results.
+
+Site Search
+
+Google Tag Manager
+Google Tag Manager Usage Statistics · Download List of All Websites using Google Tag Manager
+
+Tag management that lets you add and update website tags without changes to underlying website code.
+
+Tag Management
+
+Site Kit
+Site Kit Usage Statistics · Download List of All Websites using Site Kit
+
+Google's official WordPress plugin for site insights.
+
+WordPress Plugins
+
+Wordpress Plugins
+Wordpress Plugins Usage Statistics · Download List of All Websites using Wordpress Plugins
+
+Plugins are tools to extend the functionality of WordPress. The website uses various plugins from WordPress to provide additional functionality. Some of them may be listed here.
+
+Elementor
+Elementor Usage Statistics · Download List of All Websites using Elementor
+
+Page builder for WordPress
+
+WordPress Plugins
+
+Elementor Pro
+Elementor Pro Usage Statistics · Download List of All Websites using Elementor Pro
+
+Pro version of the Elementor page builder.
+
+Google Font API
+Google Font API Usage Statistics · Download List of All Websites using Google Font API
+
+The Google Font API helps you add web fonts to any web page.
+
+Fonts
+
+US Privacy User Signal Mechanism
+US Privacy User Signal Mechanism Usage Statistics · Download List of All Websites using US Privacy User Signal Mechanism
+
+The US Privacy API (USP API) is a lightweight API used to communicate signals represented in the US Privacy String.
+
+Privacy Compliance
+
+Twemoji
+Twemoji Usage Statistics · Download List of All Websites using Twemoji
+
+Twitter Emoji for Everyone
+
+Language
+View Global Trends
+English - Inferred
+English - Inferred Usage Statistics · Download List of All Websites using English - Inferred
+
+Based on the title and description text the website content is potentially English.
+
+eCommerce
+View Global Trends
+WooCommerce Checkout
+WooCommerce Checkout Usage Statistics · Download List of All Websites using WooCommerce Checkout
+
+A WooCommerce website that has a checkout page.
+
+Open Source · Plugin / Module
+
+Frameworks
+View Global Trends
+Astra Theme
+Astra Theme Usage Statistics · Download List of All Websites using Astra Theme
+
+Astra is a fully customizable theme suitable for blogs, personal portfolios and business websites by Brainstorm Force.
+
+WordPress Theme
+
+Organization Schema
+Organization Schema Usage Statistics · Download List of All Websites using Organization Schema
+
+Organization i.e. school, NGO, Corporation.
+
+Schema
+
+Mobile
+View Global Trends
+Viewport Meta
+Viewport Meta Usage Statistics · Download List of All Websites using Viewport Meta
+
+This page uses the viewport meta tag which means the content may be optimized for mobile content.
+
+IPhone / Mobile Compatible
+IPhone / Mobile Compatible Usage Statistics · Download List of All Websites using IPhone / Mobile Compatible
+
+The website contains code that allows the page to support IPhone / Mobile Content.
+
+Apple Mobile Web Clips Icon
+Apple Mobile Web Clips Icon Usage Statistics · Download List of All Websites using Apple Mobile Web Clips Icon
+
+This page contains an icon for iPhone, iPad and iTouch devices.
+
+Content Delivery Network
+View Global Trends
+GStatic Google Static Content
+GStatic Google Static Content Usage Statistics · Download List of All Websites using GStatic Google Static Content
+
+Google has off-loaded static content (Javascript/Images/CSS) to a different domain name in an effort to reduce bandwidth usage and increase network performance for the end user.
+
+Content Management System
+View Global Trends
+WordPress
+WordPress Usage Statistics · Download List of All Websites using WordPress
+
+WordPress is a state-of-the-art semantic personal publishing platform with a focus on aesthetics, web standards, and usability.
+
+Open Source · Blog
+
+WordPress 6.8
+WordPress 6.8 Usage Statistics · Download List of All Websites using WordPress 6.8
+
+WordPress version 6.8.*
+
+JavaScript Libraries and Functions
+View Global Trends
+Intersection Observer
+Intersection Observer Usage Statistics · Download List of All Websites using Intersection Observer
+
+API that can be used to understand the visibility and position of DOM elements relative to a containing element or to the top-level viewport.
+
+jQuery
+jQuery Usage Statistics · Download List of All Websites using jQuery
+
+JQuery is a fast, concise, JavaScript Library that simplifies how you traverse HTML documents, handle events, perform animations, and add Ajax interactions to your web pages. jQuery is designed to change the way that you write JavaScript.
+
+JavaScript Library
+
+jQuery 3.7.1
+jQuery 3.7.1 Usage Statistics · Download List of All Websites using jQuery 3.7.1
+
+jQuery version 3.7.1
+
+jQuery UI
+jQuery UI Usage Statistics · Download List of All Websites using jQuery UI
+
+jQuery UI provides abstractions for low-level interaction and animation, advanced effects and high-level, themeable widgets, built on top of the jQuery JavaScript Library, that you can use to build highly interactive web applications.
+
+Lightbox
+Lightbox Usage Statistics · Download List of All Websites using Lightbox
+
+Lightbox JS is a simple, unobtrusive script used to overlay images on the current page. It's a snap to setup and works on all modern browsers.
+
+core-js
+core-js Usage Statistics · Download List of All Websites using core-js
+
+Modular standard library for JavaScript.
+
+Framework
+
+Verified Link
+View Global Trends
+Artificial Intelligence
+Artificial Intelligence Usage Statistics · Download List of All Websites using Artificial Intelligence
+
+This technology represents us finding some form of mention of AI or ChatGPT on the homepage of the website.
+
+Advertising
+View Global Trends
+DoubleClick.Net
+DoubleClick.Net Usage Statistics · Download List of All Websites using DoubleClick.Net
+
+DoubleClick enables agencies, marketers and publishers to work together successfully and profit from their digital marketing investments. Owned by Google and now referred to as DoubleClick Digital Marketing or Google Enterprise Advertising.
+
+Web Hosting Providers
+View Global Trends
+EasyWP Hosting
+EasyWP Hosting Usage Statistics · Download List of All Websites using EasyWP Hosting
+
+Managed WordPress hosting.
+
+WordPress Hosting
+
+Namecheap Hosting
+Namecheap Hosting Usage Statistics · Download List of All Websites using Namecheap Hosting
+
+Domain registration and hosting services from Namecheap.
+
+US hosting
+
+SSL Certificates
+View Global Trends
+HSTS
+HSTS Usage Statistics · Download List of All Websites using HSTS
+
+Forces browsers to only communicate with the site using HTTPS.
+
+SSL by Default
+SSL by Default Usage Statistics · Download List of All Websites using SSL by Default
+
+The website redirects traffic to an HTTPS/SSL version by default.
+
+Sectigo SSL
+Sectigo SSL Usage Statistics · Download List of All Websites using Sectigo SSL
+
+SSL from Sectigo formerly Comodo.
+
+Sectigo Domain SSL
+Sectigo Domain SSL Usage Statistics · Download List of All Websites using Sectigo Domain SSL
+
+SSL registration with Sectigo (formerly Comodo CA).
+
+Name Server
+View Global Trends
+Namecheap DNS
+Namecheap DNS Usage Statistics · Download List of All Websites using Namecheap DNS
+
+DNS services provided by Namecheap.
+
+Email Hosting Providers
+View Global Trends
+SPF
+SPF Usage Statistics · Download List of All Websites using SPF
+
+The Sender Policy Framework is an open standard specifying a technical method to prevent sender address forgery.
+
+DMARC
+DMARC Usage Statistics · Download List of All Websites using DMARC
+
+A technical specification created by a group of organizations that want to help reduce the potential for email-based abuse
+
+DMARC
+
+DMARC None
+DMARC None Usage Statistics · Download List of All Websites using DMARC None
+
+The domain has a DMARC policy of 'None'. A policy of 'none' means this DMARC record will not affect the delivery of email, but it will provide reports on where your outbound email appears to be coming from.
+
+Web Servers
+View Global Trends
+nginx
+nginx Usage Statistics · Download List of All Websites using nginx
+
+nginx [engine x] is a HTTP server and mail proxy server written by Igor Sysoev.
+
+Syndication Techniques
+View Global Trends
+RSS
+RSS Usage Statistics · Download List of All Websites using RSS
+
+A family of web feed formats used to publish frequently updated content such as blog entries, news headlines or podcasts.
+
+Really Simple Discovery
+Really Simple Discovery Usage Statistics · Download List of All Websites using Really Simple Discovery
+
+Really Simple Discovery is a way to help client software find the services needed to read, edit, or "work with" weblogging software.
+
+Pingback Support
+Pingback Support Usage Statistics · Download List of All Websites using Pingback Support
+
+A Pingback is one of three types of Linkbacks, methods for Web authors to request notification when somebody links to one of their documents.
+
+Content Delivery Network
+View Global Trends
+Content Delivery Network
+Content Delivery Network Usage Statistics · Download List of All Websites using Content Delivery Network
+
+This page contains links that give the impression that some of the site contents are stored on a content delivery network.
