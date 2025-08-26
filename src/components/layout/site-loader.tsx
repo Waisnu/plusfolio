@@ -64,8 +64,8 @@ export default function SiteLoader({ children }: SiteLoaderProps) {
           }
           
           // Wait for image to load or fail
-          return new Promise(resolve => {
-            const timeout = setTimeout(resolve, 2000); // Max 2s wait per image
+          return new Promise<void>(resolve => {
+            const timeout = setTimeout(() => resolve(), 2000); // Max 2s wait per image
             
             img.onload = () => {
               clearTimeout(timeout);

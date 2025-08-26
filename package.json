@@ -11,6 +11,7 @@
     "build:analyze": "ANALYZE=true next build"
   },
   "dependencies": {
+    "@auth/supabase-adapter": "^1.10.0",
     "@fontsource/inter": "^5.2.6",
     "@number-flow/react": "^0.5.10",
     "@paper-design/shaders-react": "^0.0.46",
@@ -19,6 +20,8 @@
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-switch": "^1.2.6",
+    "@supabase/supabase-js": "^2.56.0",
+    "@types/uuid": "^10.0.0",
     "canvas-confetti": "^1.9.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -26,6 +29,7 @@
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.541.0",
     "next": "15.5.0",
+    "next-auth": "^4.24.11",
     "next-themes": "^0.4.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -34,6 +38,7 @@
     "tailwind-merge": "^3.3.1",
     "three": "^0.179.1",
     "unicornstudio-react": "^1.4.29-1",
+    "uuid": "^11.1.0",
     "zod": "^4.1.1"
   },
   "devDependencies": {
