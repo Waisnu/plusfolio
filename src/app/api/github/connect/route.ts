@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
     }
     
     // Store the connection
-    const { data: connection, error } = await (supabase as any)
+    const { data: connection, error } = await supabase
       .from('user_connections')
       .insert({
         user_id,
@@ -89,7 +89,7 @@ export async function DELETE(request: NextRequest) {
     })
     
     // Remove the connection
-    const { error } = await (supabase as any)
+    const { error } = await supabase
       .from('user_connections')
       .delete()
       .eq('user_id', user_id)

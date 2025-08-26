@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
       order: searchParams.get('order') as any || 'desc'
     })
     
-    let dbQuery = (supabase as any)
+    let dbQuery = supabase
       .from('reports')
       .select(`
         id,
@@ -76,7 +76,7 @@ export async function GET(request: NextRequest) {
     }
     
     // Get total count for pagination
-    let countQuery = (supabase as any)
+    let countQuery = supabase
       .from('reports')
       .select('*', { count: 'exact', head: true })
     

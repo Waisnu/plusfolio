@@ -27,7 +27,7 @@ export async function GET(
     
     // Increment view count for public reports
     if ((report as any).is_public) {
-      await (supabase as any)
+      await supabase
         .from('reports')
         .update({ 
           view_count: ((report as any).view_count || 0) + 1,
@@ -72,7 +72,7 @@ export async function PUT(
     
     const updates = updateSchema.parse(body)
     
-    const { data: updatedReport, error } = await (supabase as any)
+    const { data: updatedReport, error } = await supabase
       .from('reports')
       .update({
         ...updates,

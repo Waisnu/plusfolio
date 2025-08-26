@@ -33,7 +33,7 @@ export async function GET(
     }
     
     // Increment view count
-    await (supabase as any)
+    await supabase
       .from('reports')
       .update({ 
         view_count: ((report as any).view_count || 0) + 1,

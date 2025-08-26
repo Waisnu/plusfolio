@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
                '0.0.0.0'
     const userAgent = request.headers.get('user-agent') || ''
     
-    const { data: feedback, error } = await (supabase as any)
+    const { data: feedback, error } = await supabase
       .from('feedback')
       .insert({
         ...feedbackData,
@@ -92,7 +92,7 @@ export async function GET(request: NextRequest) {
       )
     }
     
-    let dbQuery = (supabase as any)
+    let dbQuery = supabase
       .from('feedback')
       .select(`
         id,

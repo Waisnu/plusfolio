@@ -9,7 +9,7 @@ async function dashboardHandler(request: AuthenticatedRequest) {
   const userId = request.user!.plusfolio_user_id
   
   // Use the efficient dashboard function from database
-  const { data: dashboardData, error } = await (supabase as any)
+  const { data: dashboardData, error } = await supabase
     .rpc('get_user_dashboard_data', { p_user_id: userId })
   
   if (error) {
@@ -31,7 +31,7 @@ async function dashboardHandler(request: AuthenticatedRequest) {
     connected_accounts: result.connected_accounts,
     repositories: result.repositories,
     usage_stats: result.usage_stats,
-    report_count: result.user_data.total_reports_generated || 0
+    report_count: (result.user_data as any)?.total_reports_generated || 0
   })
 }
 

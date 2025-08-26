@@ -49,7 +49,7 @@ export function withAuth(
       }
 
       // Fetch user data from database
-      const { data: user, error } = await (supabase as any)
+      const { data: user, error } = await supabase
         .from('users')
         .select('id, email, full_name, subscription_tier')
         .eq('email', token.email!)

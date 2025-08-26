@@ -1,6 +1,6 @@
 // Supabase client configuration for PlusFolio
 import { createClient } from '@supabase/supabase-js'
-import { Database } from './database.types'
+import { Database } from '../types/database.types'
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://sufbbgqdabunbvhvzevg.supabase.co'
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || ''
@@ -25,61 +25,61 @@ export const supabaseAdmin = createClient<Database>(supabaseUrl, supabaseService
 // Database helper functions
 export const db = {
   // Users
-  async getUserById(id: string) {
+  async getUserById(id: string): Promise<Database['public']['Tables']['users']['Row'] | null> {
     const { data, error } = await supabase
       .from('users')
       .select('*')
       .eq('id', id)
       .single()
     
-    if (error) throw error
-    return data
+    if (error && error.code !== 'PGRST116') throw error
+    return data || null
   },
 
-  async createUser(user: Partial<Database['public']['Tables']['users']['Insert']>) {
-    const { data, error } = await (supabaseAdmin as any)
+  async createUser(user: Database['public']['Tables']['users']['Insert']) {
+    const { data, error } = await supabaseAdmin
       .from('users')
       .insert(user)
       .select()
       .single()
     
-    if (error) throw error
-    return data
+    if (error && error.code !== 'PGRST116') throw error
+    return data || null
   },
 
-  async updateUser(id: string, updates: Partial<Database['public']['Tables']['users']['Update']>) {
-    const { data, error } = await (supabase as any)
+  async updateUser(id: string, updates: Database['public']['Tables']['users']['Update']) {
+    const { data, error } = await supabase
       .from('users')
       .update(updates)
       .eq('id', id)
       .select()
       .single()
     
-    if (error) throw error
-    return data
+    if (error && error.code !== 'PGRST116') throw error
+    return data || null
   },
 
   // Reports
-  async createReport(report: any) {
-    const { data, error } = await (supabase as any)
+  async createReport(report: Database['public']['Tables']['reports']['Insert']) {
+    const { data, error } = await supabase
       .from('reports')
       .insert(report)
       .select()
       .single()
     
-    if (error) throw error
-    return data
+    if (error && error.code !== 'PGRST116') throw error
+    return data || null
   },
 
-  async getReport(id: string) {
+  async getReport(id: string): Promise<Database['public']['Tables']['reports']['Row'] | null> {
     const { data, error } = await supabase
       .from('reports')
       .select('*')
       .eq('id', id)
       .single()
     
-    if (error) throw error
-    return data
+    if (error && error.code !== 'PGRST116') throw error
+    return data || null
   },
 
   async getUserReports(userId: string, limit = 10) {
@@ -91,11 +91,11 @@ export const db = {
       .order('created_at', { ascending: false })
       .limit(limit)
     
-    if (error) throw error
-    return data
+    if (error && error.code !== 'PGRST116') throw error
+    return data || null
   },
 
-  async getPublicReport(shareableToken: string) {
+  async getPublicReport(shareableToken: string): Promise<Database['public']['Tables']['reports']['Row'] | null> {
     const { data, error } = await supabase
       .from('reports')
       .select('*')
@@ -103,8 +103,8 @@ export const db = {
       .eq('is_public', true)
       .single()
     
-    if (error) throw error
-    return data
+    if (error && error.code !== 'PGRST116') throw error
+    return data || null
   },
 
   // User Connections
@@ -130,8 +130,8 @@ export const db = {
       .select()
       .single()
     
-    if (error) throw error
-    return data
+    if (error && error.code !== 'PGRST116') throw error
+    return data || null
   },
 
   // Repositories
@@ -142,8 +142,8 @@ export const db = {
       .eq('user_id', userId)
       .order('stargazers_count', { ascending: false })
     
-    if (error) throw error
-    return data
+    if (error && error.code !== 'PGRST116') throw error
+    return data || null
   },
 
   async createRepository(repo: Database['public']['Tables']['repositories']['Insert']) {
@@ -156,8 +156,8 @@ export const db = {
       .select()
       .single()
     
-    if (error) throw error
-    return data
+    if (error && error.code !== 'PGRST116') throw error
+    return data || null
   },
 
   // API Usage tracking

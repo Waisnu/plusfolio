@@ -194,7 +194,7 @@ export class AnalysisOrchestrator {
       console.error(`[${reportId}] Analysis failed:`, error)
       
       // Update report with error status
-      await (supabase as any)
+      await supabase
         .from('reports')
         .update({
           processing_status: 'failed',
@@ -463,7 +463,7 @@ export class AnalysisOrchestrator {
     }
 
     // Update the report in database
-    const updatedReport = await (supabase as any)
+    const updatedReport = await supabase
       .from('reports')
       .update({
         final_url: crawlResult.metadata.sourceURL || request.url,
@@ -493,7 +493,7 @@ export class AnalysisOrchestrator {
 
   private async updateUserReportCount(userId: string): Promise<void> {
     try {
-      await (supabase as any).rpc('increment_user_report_count', { user_id: userId })
+      await supabase.rpc('increment_user_report_count', { user_id: userId })
     } catch (error) {
       console.error('Error updating user report count:', error)
       // Non-critical error, don't throw
