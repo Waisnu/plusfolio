@@ -473,7 +473,7 @@ export class AnalysisOrchestrator {
         score_breakdown: reportData.clarityScore.breakdown,
         processing_time_ms: processingTime,
         processing_status: 'completed',
-        report_data: reportData,
+        report_data: reportData as any,
         ai_model_used: 'gemini-2.5-flash',
         ai_cost_usd: this.calculateGeminiCost(analysisResult.tokensUsed || 0),
         crawl_service: 'firecrawl',
@@ -488,7 +488,7 @@ export class AnalysisOrchestrator {
       throw new Error('Failed to update report: ' + updatedReport.error.message)
     }
 
-    return updatedReport.data
+    return updatedReport.data as unknown as Report
   }
 
   private async updateUserReportCount(userId: string): Promise<void> {
@@ -503,7 +503,7 @@ export class AnalysisOrchestrator {
   // Public method to check analysis status
   async getAnalysisStatus(reportId: string): Promise<Report | null> {
     try {
-      return await db.getReport(reportId)
+      return await db.getReport(reportId) as unknown as Report
     } catch (error) {
       console.error('Error getting analysis status:', error)
       return null

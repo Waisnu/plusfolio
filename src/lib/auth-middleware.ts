@@ -78,7 +78,7 @@ export function withAuth(
       (request as AuthenticatedRequest).user = {
         id: token.sub!,
         email: user.email,
-        name: user.full_name,
+        name: user.full_name || undefined,
         subscription_tier: user.subscription_tier,
         plusfolio_user_id: user.id
       }

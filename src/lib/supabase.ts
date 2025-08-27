@@ -174,6 +174,10 @@ export const db = {
     // Get user data
     const user = await this.getUserById(userId)
     
+    if (!user) {
+      throw new Error(`User not found: ${userId}`)
+    }
+    
     // Get recent reports
     const recent_reports = await this.getUserReports(userId, 5)
     

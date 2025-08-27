@@ -216,7 +216,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Hero Performance Score - Most Important Metric */}
-          {dashboardData?.recent_reports.length > 0 && (
+          {dashboardData?.recent_reports && dashboardData.recent_reports.length > 0 && (
             <Card className="glass-morphism border-white/20 mb-8">
               <CardContent className="p-8">
                 <div className="flex items-center justify-between">
